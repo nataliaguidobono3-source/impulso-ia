@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Impulso IA | Marketing para pequeños comercios</title>
+<style>
+:root{--green:#355d48;--dark:#263d31;--cream:#faf6ef;--terra:#c97855;--line:#e5e7df}*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#26372f;background:#f7f7f3}header{background:linear-gradient(115deg,#294b39,#537a5b);color:white;padding:52px 20px;text-align:center}header h1{font-size:clamp(2.3rem,5vw,3.8rem);margin:0}header p{margin:7px auto;max-width:630px}main{max-width:940px;margin:-24px auto 30px;padding:0 18px}.panel{background:white;border-radius:18px;box-shadow:0 8px 28px #19382612;padding:clamp(20px,4vw,36px);margin-bottom:24px}h2,h3{line-height:1.25;color:var(--dark)}h2{margin-top:0}.eyebrow{color:var(--terra);font-weight:750;text-transform:uppercase;font-size:.78rem;letter-spacing:.09em}.lead{color:#526157}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}label{display:block;font-weight:650;font-size:.94rem;margin-bottom:5px}input,textarea,select{width:100%;border:1px solid #cbd5cc;border-radius:9px;padding:11px 12px;font:inherit;background:white;color:#26372f}textarea{min-height:80px;resize:vertical}.field{margin-bottom:15px}.wide{grid-column:1/-1}.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}button{border:0;border-radius:9px;padding:12px 19px;font:inherit;font-weight:700;cursor:pointer;background:var(--green);color:white}button:hover{filter:brightness(1.09)}button:disabled{opacity:.55;cursor:wait}.secondary{background:#ecf2ed;color:var(--green)}.outline{background:white;color:var(--green);border:1px solid #b9cabc}.hint{font-size:.87rem;color:#65756a}.notice{background:#fff7ed;border-left:4px solid var(--terra);padding:12px 16px;border-radius:6px;margin:15px 0}.success{background:#eaf4eb;border-left-color:#3d8150}.report{white-space:pre-wrap;background:var(--cream);border-radius:12px;padding:20px;line-height:1.75;overflow-wrap:anywhere}.card{border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}.card img{display:block;max-width:100%;width:520px;max-height:520px;object-fit:contain;border-radius:10px;background:#eef0e9;margin:14px 0}.card .actions{margin-top:12px}.pub-text{white-space:pre-wrap;overflow-wrap:anywhere}.empty-image{border:1px dashed #b7c7b9;background:#f5f7f3;border-radius:10px;padding:28px;text-align:center;color:#63796b;margin:14px 0}.hidden{display:none!important}.tag{display:inline-block;border-radius:99px;padding:3px 10px;background:#e9f1e8;color:#355d48;font-size:.8rem;font-weight:750}footer{text-align:center;padding:28px;color:#69756c;font-size:.87rem}@media(max-width:650px){.grid{grid-template-columns:1fr}.panel{padding:20px}.actions button{width:100%}}
+</style>
+</head>
+<body>
+<header><h1>Impulso IA</h1><p>Tu negocio merece crecer.</p><p>Un asistente de marketing pensado para pequeños comercios.</p></header>
+<main>
+<section class="panel" id="formPanel">
+<div class="eyebrow">Conocemos tu negocio</div><h2>Contanos sobre tu comercio</h2><p class="lead">Respondé estas preguntas para preparar un diagnóstico inicial, recomendaciones y publicaciones para redes sociales.</p>
+<form id="businessForm">
+<div class="grid">
+<div class="field"><label for="nombre">1. Nombre del negocio</label><input id="nombre" placeholder="Ej.: Lavadero Lamadrid" required></div>
+<div class="field"><label for="horarios">5. Días y horarios de atención</label><input id="horarios" placeholder="Ej.: lunes a sábado, 9 a 17"></div>
+<div class="field wide"><label for="servicios">2. ¿Qué productos o servicios ofrece?</label><textarea id="servicios" required></textarea></div>
+<div class="field"><label for="precios">3. Principales precios</label><textarea id="precios"></textarea></div>
+<div class="field"><label for="clientes">4. Clientes habituales</label><textarea id="clientes"></textarea></div>
+<div class="field"><label for="presencia">6. Presencia digital actual</label><textarea id="presencia" placeholder="Instagram, Facebook, WhatsApp, Google..."></textarea></div>
+<div class="field"><label for="diferencial">7. ¿Qué lo diferencia?</label><textarea id="diferencial"></textarea></div>
+<div class="field"><label for="objetivo">8. Objetivo principal</label><select id="objetivo" required><option value="">Seleccioná una opción</option><option>Conseguir nuevos clientes</option><option>Aumentar las ventas</option><option>Mejorar las redes sociales</option><option>Promocionar productos o servicios</option><option>Fidelizar clientes</option></select></div>
+<div class="field"><label for="estilo">Estilo de comunicación</label><input id="estilo" placeholder="Ej.: cercano, familiar y profesional"></div>
+</div>
+<div class="actions"><button type="submit" id="realButton">✨ Generar con IA (n8n)</button><button type="button" class="secondary" id="demoButton">Ver demostración sin conexión</button></div>
+<p class="hint">La generación real utiliza n8n y puede consumir créditos. La demostración es ilustrativa, funciona sin internet y no genera imágenes nuevas.</p>
+</form>
+</section>
+<section class="panel hidden" id="results" aria-live="polite"><div class="eyebrow">Resultados</div><h2 id="resultTitle">Tu estrategia de marketing</h2><div id="resultStatus"></div><h3>📊 Diagnóstico, estrategia y recomendaciones</h3><div class="report" id="report"></div><h3>📱 Publicaciones para redes sociales</h3><div id="posts"></div><div class="actions"><button type="button" class="secondary" id="backButton">← Analizar otro negocio</button><button type="button" class="outline" id="copyReport">📋 Copiar informe</button></div></section>
+</main><footer>Impulso IA · Prototipo de asistente de marketing con inteligencia artificial</footer>
+<script>
+'use strict';
+const WEBHOOK='https://natysole.app.n8n.cloud/webhook-test/4a147c93-9b9a-4d2e-a7e2-ab0a96b350ee';
+const fields=['nombre','servicios','precios','clientes','horarios','presencia','diferencial','objetivo','estilo'];
+const el=id=>document.getElementById(id);
+const getForm=()=>Object.fromEntries(fields.map(k=>[k,el(k).value.trim()]));
+const safe=(value,fallback='No informado')=>String(value||fallback);
+function render(data, demo=false){
+ const report=safe(data.estrategia,'El servicio no devolvió el informe completo.');
+ const publications=Array.isArray(data.publicaciones)?data.publicaciones:[];
+ el('formPanel').classList.add('hidden');el('results').classList.remove('hidden');
+ el('resultTitle').textContent=demo?'Demostración de Impulso IA':'Tu estrategia de marketing';
+ el('resultStatus').className='notice '+(demo?'':'success');
+ el('resultStatus').textContent=demo?'MODO DEMOSTRACIÓN: contenido ilustrativo elaborado a partir de los datos del formulario. No es una respuesta generada por IA. Las imágenes, si aparecen, son ejemplos locales.':'RESULTADO REAL: información recibida del flujo de n8n.';
+ el('report').textContent=report;el('posts').replaceChildren();
+ publications.forEach((post,i)=>{
+  const card=document.createElement('article');card.className='card';
+  const title=document.createElement('h3');title.textContent='Publicación '+safe(post.letra,String(i+1));card.append(title);
+  const imgValue=typeof post.imagen==='string'?post.imagen:'';
+  if(imgValue){const img=document.createElement('img');img.src=imgValue.startsWith('data:')||imgValue.startsWith('http')||imgValue.startsWith('imagenes/')?imgValue:'data:image/png;base64,'+imgValue;img.alt='Imagen de la publicación '+safe(post.letra);img.onerror=()=>{img.replaceWith(makeEmpty('Imagen no disponible en este dispositivo'))};card.append(img)}
+  else card.append(makeEmpty('Imagen no disponible en esta demostración'));
+  const txt=document.createElement('p');txt.className='pub-text';txt.textContent=safe(post.texto,'Sin texto');card.append(txt);
+  const buttons=document.createElement('div');buttons.className='actions';
+  const copy=document.createElement('button');copy.type='button';copy.className='secondary';copy.textContent='📋 Copiar texto';copy.onclick=()=>copyText(txt.textContent);buttons.append(copy);
+  if(imgValue){const download=document.createElement('button');download.type='button';download.className='outline';download.textContent='⬇️ Descargar imagen';download.onclick=()=>downloadImage(imgValue,post.letra||String(i+1));buttons.append(download)}
+  card.append(buttons);el('posts').append(card);
+ });
+ if(!publications.length)el('posts').append(makeEmpty('No se recibieron publicaciones.'));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function makeEmpty(message){const d=document.createElement('div');d.className='empty-image';d.textContent=message;return d}
+async function copyText(t){try{await navigator.clipboard.writeText(t);alert('Texto copiado.')}catch{alert('No se pudo copiar automáticamente. Seleccioná el texto para copiarlo.')}}
+async function downloadImage(value,letter){const source=value.startsWith('data:')||value.startsWith('http')||value.startsWith('imagenes/')?value:'data:image/png;base64,'+value;try{const res=await fetch(source);if(!res.ok)throw Error();const blob=await res.blob();const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='impulso-ia-publicacion-'+letter+'.png';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}catch{window.open(source,'_blank');alert('No se pudo descargar automáticamente; se intentó abrir la imagen.')}}
+function demoData(d){
+ const name=safe(d.nombre,'El comercio'),services=safe(d.servicios,'sus productos y servicios'),customers=safe(d.clientes,'clientes de la zona'),goal=safe(d.objetivo,'aumentar su visibilidad'),diff=safe(d.diferencial,'la atención cercana');
+ const report=`DIAGNÓSTICO INICIAL (ILUSTRATIVO)\n${name} ofrece ${services}. Su público informado es: ${customers}. Su principal objetivo es ${goal.toLowerCase()}.\n\nPRESENCIA DIGITAL\nSituación declarada: ${safe(d.presencia)}. Se recomienda revisar la frecuencia de publicaciones, la claridad de la información de contacto y la facilidad para consultar por WhatsApp. No se realizó una auditoría real de redes.\n\nESTRATEGIA DE MARKETING\n• Comunicar con claridad qué ofrece el negocio y para quién.\n• Destacar como diferencial: ${diff}.\n• Mantener una identidad visual y un tono ${safe(d.estilo,'cercano')}.\n• Incluir un llamado a la acción concreto en cada publicación.\n\nRECOMENDACIONES PRÁCTICAS\n• Confirmar horarios y precios antes de publicarlos: ${safe(d.horarios)} / ${safe(d.precios)}.\n• Mostrar ejemplos reales del trabajo, con autorización cuando corresponda.\n• Medir consultas y mensajes recibidos para ajustar la estrategia.\n\nCALENDARIO SEMANAL SUGERIDO\nLunes: presentación de servicios.\nMiércoles: calidad y confianza.\nViernes: invitación a consultar o reservar.\n\nNota: este informe es una simulación orientativa, no una evaluación real realizada por IA.`;
+ const examples=[
+ {letra:'A',texto:`✨ ¡Conocé ${name}!\nOfrecemos ${services}.\n📩 Escribinos y descubrí cómo podemos ayudarte.`},
+ {letra:'B',texto:`💚 En ${name} creemos que la diferencia está en ${diff}.\nGracias a quienes nos eligen. ¡Consultanos!`},
+ {letra:'C',texto:`📣 ¿Buscás ${services}?\nEn ${name} estamos para ayudarte.\n🕒 ${safe(d.horarios,'Consultá nuestros horarios')}.\n📲 Escribinos para conocer más.`}
+ ];
+ examples.forEach(p=>{p.imagen='imagenes/publicacion-'+p.letra+'.png'});
+ return {estrategia:report,publicaciones:examples};
+}
+el('demoButton').onclick=()=>{const d=getForm();if(!d.nombre||!d.servicios){alert('Completá al menos el nombre y los servicios del negocio.');return}render(demoData(d),true)};
+el('businessForm').onsubmit=async event=>{
+ event.preventDefault();const button=el('realButton');button.disabled=true;button.textContent='Generando... puede tardar unos minutos';
+ try{
+  const response=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(getForm())});
+  if(!response.ok)throw new Error('HTTP '+response.status);
+  let data=await response.json();if(typeof data==='string')data=JSON.parse(data);if(Array.isArray(data)&&data.length===1&&data[0].json)data=data[0].json;
+  if(!data||!Array.isArray(data.publicaciones))throw Error('La respuesta no contiene publicaciones válidas.');
+  render(data,false);
+ }catch(error){console.error(error);alert('No se pudo obtener la respuesta de n8n: '+error.message+'\n\nPodés usar «Ver demostración sin conexión» para presentar el proyecto.')}finally{button.disabled=false;button.textContent='✨ Generar con IA (n8n)'}
+};
+el('backButton').onclick=()=>{el('results').classList.add('hidden');el('formPanel').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})};
+el('copyReport').onclick=()=>copyText(el('report').textContent);
+</script>
+</body></html>
